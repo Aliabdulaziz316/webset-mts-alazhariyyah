@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTs PSA Al Azhariyyah Cibulan - Sekolah Islam Unggulan</title>
+    <!-- Muat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Muat Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Konfigurasi Dasar Tailwind dan Font */
+        :root {
+            --primary-color: #166534; /* Hijau Tua */
+            --accent-color: #d97706; /* Emas */
+        }
+        
+        .mt-islamic-bg {
+            background-color: var(--primary-color);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.1'%3E%3Cpath d='M36 34.57c.07 1.13.56 2.22 1.34 3.12A10.02 10.02 0 0048 36c5.52 0 10 4.48 10 10s-4.48 10-10 10-10-4.48-10-10c0-1.22.22-2.4.63-3.5a10.04 10.04 0 00-3.12-1.34L28 41.57c-2.22 2.22-5.54 3.43-9.15 3.43-6.9 0-12.5-5.6-12.5-12.5S11.95 20 18.85 20c3.6 0 6.92 1.2 9.14 3.43l5.02 5.02c1.02 1.02 2.37 1.6 3.82 1.6.07 0 .14-.01.21-.01z'/%3E%3Cpath d='M10 14.57c.07 1.13.56 2.22 1.34 3.12A10.02 10.02 0 0022 16c5.52 0 10 4.48 10 10s-4.48 10-10 10-10-4.48-10-10c0-1.22.22-2.4.63-3.5a10.04 10.04 0 00-3.12-1.34L2 15.57C-.22 13.35-1.43 10.03 2.15 6.42 12.3-3.73 22.8 5.77 28 11.02c1.78 1.78 2.75 4.14 2.75 6.67 0 5.17-4.18 9.35-9.35 9.35-2.53 0-4.89-.97-6.67-2.75L15 20.22c-1.02-1.02-2.37-1.6-3.82-1.6-.07 0-.14.01-.21.01z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .mt-header {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #b45309;
+            box-shadow: 0 4px 15px -3px rgba(217, 119, 6, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Styling untuk modal */
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-islamic': '#166534', /* Hijau Tua */
+                        'accent-gold': '#d97706',    /* Emas Tua */
+                        'cream': '#fefce8',          /* Krem */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="mt-header fixed top-0 w-full z-30 bg-white/90">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Nama Lembaga -->
+                <div class="flex-shrink-0 flex items-center">
+                    <i class="fas fa-mosque text-3xl text-primary-islamic mr-2"></i>
+                    <span class="text-xl font-extrabold text-primary-islamic">MTs Al Azhariyyah</span>
+                </div>
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex md:space-x-6 items-center">
+                    <a href="#beranda" class="text-gray-600 hover:text-primary-islamic transition duration-150">Beranda</a>
+                    <a href="#profil" class="text-gray-600 hover:text-primary-islamic transition duration-150">Visi Misi</a>
+                    
+                    <!-- Menu Dropdown Manajemen Sekolah -->
+                    <div class="relative dropdown">
+                        <button class="text-gray-600 hover:text-primary-islamic transition duration-150 py-5 flex items-center">
+                            Manajemen Sekolah <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu hidden absolute top-full left-0 mt-0 w-60 bg-white rounded-md shadow-lg py-1 z-20 border border-gray-100">
+                            <a href="#profil-kepsek" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50">Profil Kepala Sekolah</a>
+                            <a href="#guru" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50">Daftar Guru & Staff</a>
+                            <a href="#kurikulum" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50">Kurikulum (Dokumen Publik)</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#berita" class="text-gray-600 hover:text-primary-islamic transition duration-150">Berita</a>
+                    <a href="#galeri" class="text-gray-600 hover:text-primary-islamic transition duration-150">Galeri</a>
+                    
+                    <button onclick="showAdminModal()" class="text-accent-gold font-semibold hover:text-primary-islamic transition duration-150 border-b-2 border-transparent hover:border-accent-gold py-2">
+                        <i class="fas fa-chalkboard-teacher mr-1"></i> Area Guru
+                    </button>
+                </div>
+                <!-- Tombol Menu Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-primary-islamic hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-islamic">
+                        <span class="sr-only">Buka menu utama</span>
+                        <i class="fas fa-bars h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu Mobile (Tersembunyi secara default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#beranda" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-green-50">Beranda</a>
+                <a href="#profil" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-green-50">Visi Misi</a>
+                <p class="text-sm font-bold text-primary-islamic px-3 pt-2">Manajemen Sekolah</p>
+                <a href="#profil-kepsek" class="block px-6 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-green-50">Profil Kepala Sekolah</a>
+                <a href="#guru" class="block px-6 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-green-50">Daftar Guru & Staff</a>
+                <a href="#kurikulum" class="block px-6 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-green-50">Kurikulum (Publik)</a>
+                <a href="#berita" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-green-50">Berita</a>
+                <a href="#galeri" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-green-50">Galeri</a>
+                <button onclick="showAdminModal()" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-accent-gold hover:bg-green-50">
+                    <i class="fas fa-chalkboard-teacher mr-1"></i> Area Guru
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- Bagian Beranda (Hero Section) -->
+        <section id="beranda" class="mt-islamic-bg text-white py-20 md:py-32 h-[80vh] flex items-center justify-center">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg leading-tight">
+                    Mencetak Generasi Unggul, Berakhlak Mulia
+                </h1>
+                <p class="text-lg sm:text-xl font-light mb-8 max-w-2xl mx-auto text-cream">
+                    MTs PSA Al Azhariyyah Cibulan: Pendidikan Islam Modern dengan Basis Pesantren.
+                </p>
+                <a href="#profil" class="inline-block px-8 py-3 btn-primary rounded-full text-lg font-semibold shadow-xl hover:shadow-2xl">
+                    Jelajahi Profil Kami <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Bagian Profil (Visi Misi) -->
+        <section id="profil" class="py-16 bg-cream">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary-islamic">
+                    Visi & Misi Lembaga
+                </h2>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Visi -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-accent-gold">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-eye text-3xl text-accent-gold mr-3"></i>
+                            <h3 class="text-2xl font-semibold text-gray-900">Visi</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Menjadi Madrasah Tsanawiyah terdepan dalam menghasilkan lulusan yang beriman, bertakwa, berakhlakul karimah, menguasai IPTEK, dan berjiwa sosial tinggi pada tahun 2030.
+                        </p>
+                    </div>
+                    <!-- Misi -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary-islamic">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-rocket text-3xl text-primary-islamic mr-3"></i>
+                            <h3 class="text-2xl font-semibold text-gray-900">Misi</h3>
+                        </div>
+                        <ul class="space-y-3 text-gray-600 list-disc list-inside">
+                            <li>Mengintegrasikan kurikulum agama dan umum.</li>
+                            <li>Mengembangkan potensi santri di bidang akademik dan non-akademik.</li>
+                            <li>Menciptakan lingkungan belajar yang kondusif dan islami.</li>
+                            <li>Meningkatkan profesionalisme tenaga pendidik.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Manajemen Sekolah -->
+        <section id="manajemen" class="py-16 bg-gray-100">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary-islamic">
+                    Manajemen Sekolah
+                </h2>
+                
+                <!-- Sub Bagian 1: Profil Kepala Sekolah -->
+                <div id="profil-kepsek" class="bg-white p-8 rounded-xl shadow-lg mb-8 border-t-4 border-accent-gold">
+                    <h3 class="text-3xl font-bold mb-4 text-gray-900 flex items-center">
+                        <i class="fas fa-user-tie mr-3 text-accent-gold"></i> Profil Kepala Sekolah
+                    </h3>
+                    <div class="md:flex md:space-x-8 items-center">
+                        <img src="https://placehold.co/150x150/166534/ffffff?text=Foto+Kepsek" alt="[Foto Kepala Sekolah]" class="w-32 h-32 object-cover rounded-full shadow-md mx-auto md:mx-0 flex-shrink-0 mb-4 md:mb-0">
+                        <div>
+                            <p class="text-xl font-semibold text-primary-islamic">Dr. H. Ahmad Fauzan, M.Ag.</p>
+                            <p class="text-gray-600 italic mb-3">Kepala MTs PSA Al Azhariyyah</p>
+                            <p class="text-gray-700">
+                                Beliau adalah sosok pemimpin yang visioner, berpegangan teguh pada nilai-nilai agama, dan berdedikasi tinggi dalam memajukan pendidikan Islam modern. Di bawah kepemimpinan beliau, MTs Al Azhariyyah terus berinovasi dalam mengintegrasikan kurikulum pesantren dan nasional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub Bagian 2: Daftar Guru -->
+                <div id="guru" class="bg-white p-8 rounded-xl shadow-lg mb-8 border-t-4 border-primary-islamic">
+                    <h3 class="text-3xl font-bold mb-6 text-gray-900 flex items-center">
+                        <i class="fas fa-users mr-3 text-primary-islamic"></i> Daftar Guru dan Tenaga Pendidik
+                    </h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-center">
+                        <!-- Guru Contoh 1 -->
+                        <div class="p-3 border rounded-lg hover:shadow-md transition bg-gray-50">
+                            <img src="https://placehold.co/80x80/d97706/ffffff?text=G1" alt="[Foto Guru]" class="w-20 h-20 object-cover rounded-full mx-auto mb-2 shadow-sm">
+                            <p class="font-semibold text-sm text-gray-800">Ustadzah Siti Aisyah</p>
+                            <p class="text-xs text-gray-500">Guru Bahasa Arab</p>
+                        </div>
+                        <!-- Guru Contoh 2 -->
+                        <div class="p-3 border rounded-lg hover:shadow-md transition bg-gray-50">
+                            <img src="https://placehold.co/80x80/166534/ffffff?text=G2" alt="[Foto Guru]" class="w-20 h-20 object-cover rounded-full mx-auto mb-2 shadow-sm">
+                            <p class="font-semibold text-sm text-gray-800">Bapak Budi Santoso</p>
+                            <p class="text-xs text-gray-500">Guru Matematika</p>
+                        </div>
+                        <!-- Guru Contoh 3 -->
+                        <div class="p-3 border rounded-lg hover:shadow-md transition bg-gray-50">
+                            <img src="https://placehold.co/80x80/059669/ffffff?text=G3" alt="[Foto Guru]" class="w-20 h-20 object-cover rounded-full mx-auto mb-2 shadow-sm">
+                            <p class="font-semibold text-sm text-gray-800">Ibu Fitriani</p>
+                            <p class="text-xs text-gray-500">Guru IPA</p>
+                        </div>
+                         <!-- Guru Contoh 4 -->
+                        <div class="p-3 border rounded-lg hover:shadow-md transition bg-gray-50">
+                            <img src="https://placehold.co/80x80/d97706/ffffff?text=G4" alt="[Foto Guru]" class="w-20 h-20 object-cover rounded-full mx-auto mb-2 shadow-sm">
+                            <p class="font-semibold text-sm text-gray-800">Ustadz Hasan</p>
+                            <p class="text-xs text-gray-500">Guru Hadis</p>
+                        </div>
+                         <!-- Guru Contoh 5 -->
+                        <div class="p-3 border rounded-lg hover:shadow-md transition bg-gray-50">
+                            <img src="https://placehold.co/80x80/166534/ffffff?text=G5" alt="[Foto Guru]" class="w-20 h-20 object-cover rounded-full mx-auto mb-2 shadow-sm">
+                            <p class="font-semibold text-sm text-gray-800">Bapak Jamil</p>
+                            <p class="text-xs text-gray-500">Guru Komputer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub Bagian 3: Kurikulum Publik -->
+                <div id="kurikulum" class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-accent-gold">
+                    <h3 class="text-3xl font-bold mb-6 text-gray-900 flex items-center">
+                        <i class="fas fa-book-open mr-3 text-accent-gold"></i> Kurikulum dan Dokumen Publik
+                    </h3>
+                    <p class="text-gray-600 mb-4">Anda dapat mengunduh dokumen kurikulum dan administrasi pembelajaran (RPP, Prota, Promes, dsb.) yang telah dipublikasikan oleh dewan guru di bawah ini.</p>
+                    
+                    <div id="public-documents-list" class="space-y-4">
+                        <p class="text-gray-400 italic" id="public-no-documents-message">Memuat dokumen publik...</p>
+                        <!-- Dokumen publik akan dirender di sini oleh JavaScript -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Bagian Berita & Kegiatan -->
+        <section id="berita" class="py-16 bg-gray-50">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary-islamic">
+                    Berita Terbaru
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Berita 1 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/600x400/166534/ffffff?text=Kegiatan+Pesantren" alt="[Gambar Kegiatan Pesantren]" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm font-semibold text-accent-gold">20 Nov 2025</span>
+                            <h3 class="text-xl font-bold mt-2 mb-2 text-gray-900">Peringatan Maulid Nabi: Penguatan Karakter Islami</h3>
+                            <p class="text-gray-600 text-sm line-clamp-3">
+                                Seluruh keluarga besar MTs Al Azhariyyah menggelar peringatan Maulid Nabi Muhammad SAW dengan khidmat, diisi ceramah dan pentas seni islami.
+                            </p>
+                            <a href="#" class="mt-4 inline-block text-primary-islamic hover:text-accent-gold text-sm font-semibold">Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <!-- Berita 2 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/600x400/059669/ffffff?text=Olimpiade+Pelajaran" alt="[Gambar Olimpiade Pelajaran]" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm font-semibold text-accent-gold">15 Nov 2025</span>
+                            <h3 class="text-xl font-bold mt-2 mb-2 text-gray-900">Siswa MTs Lolos Seleksi Olimpiade Sains Kabupaten</h3>
+                            <p class="text-gray-600 text-sm line-clamp-3">
+                                Dua siswa terbaik kami berhasil menembus babak final Olimpiade Sains tingkat kabupaten, menunjukkan keunggulan akademik madrasah.
+                            </p>
+                            <a href="#" class="mt-4 inline-block text-primary-islamic hover:text-accent-gold text-sm font-semibold">Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <!-- Berita 3 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/600x400/d97706/ffffff?text=Lomba+Pidato" alt="[Gambar Lomba Pidato Bahasa Arab]" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm font-semibold text-accent-gold">10 Nov 2025</span>
+                            <h3 class="text-xl font-bold mt-2 mb-2 text-gray-900">Juara 1 Lomba Pidato Bahasa Arab Se-Wilayah</h3>
+                            <p class="text-gray-600 text-sm line-clamp-3">
+                                Keberhasilan ini menjadi bukti komitmen madrasah dalam penguasaan bahasa asing, khususnya Bahasa Arab.
+                            </p>
+                            <a href="#" class="mt-4 inline-block text-primary-islamic hover:text-accent-gold text-sm font-semibold">Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Galeri Foto Kegiatan -->
+        <section id="galeri" class="py-16 bg-cream">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary-islamic">
+                    Galeri Foto Kegiatan
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/400x300/10b981/ffffff?text=Outing+Class" alt="[Foto Outing Class]" class="w-full h-40 object-cover transform hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/400x300/166534/ffffff?text=Upacara+Bendera" alt="[Foto Upacara Bendera]" class="w-full h-40 object-cover transform hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/400x300/d97706/ffffff?text=Pelajaran+di+Kelas" alt="[Foto Pelajaran di Kelas]" class="w-full h-40 object-cover transform hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/400x300/38a169/ffffff?text=Hafalan+Qur'an" alt="[Foto Hafalan Qur'an]" class="w-full h-40 object-cover transform hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/400x300/90a4ae/ffffff?text=Pentas+Seni" alt="[Foto Pentas Seni]" class="w-full h-40 object-cover transform hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/400x300/10b981/ffffff?text=Latihan+Pramuka" alt="[Foto Latihan Pramuka]" class="w-full h-40 object-cover transform hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/400x300/166534/ffffff?text=Kegiatan+Bakti+Sosial" alt="[Foto Kegiatan Bakti Sosial]" class="w-full h-40 object-cover transform hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://placehold.co/400x300/d97706/ffffff?text=Diskusi+Kelompok" alt="[Foto Diskusi Kelompok]" class="w-full h-40 object-cover transform hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-islamic-bg text-cream py-10">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="text-xl font-bold mb-3 text-accent-gold">MTs Al Azhariyyah</h4>
+                <p class="text-sm">Madrasah unggulan di Cibulan yang berkomitmen mencetak generasi Qur'ani dan berprestasi.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Menu Utama</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#beranda" class="hover:text-white transition">Beranda</a></li>
+                    <li><a href="#profil" class="hover:text-white transition">Visi & Misi</a></li>
+                    <li><a href="#profil-kepsek" class="hover:text-white transition">Profil Kepsek</a></li>
+                    <li><a href="#kurikulum" class="hover:text-white transition">Kurikulum</a></li>
+                    <li><a href="#galeri" class="hover:text-white transition">Galeri</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Kontak Kami</h4>
+                <p class="text-sm">Jl. Pesantren No. 1, Cibulan, Jawa Barat 40000</p>
+                <p class="text-sm mt-2"><i class="fas fa-phone mr-2"></i> (021) 1234 567</p>
+                <p class="text-sm"><i class="fas fa-envelope mr-2"></i> info@mts-azhariyyah.sch.id</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Media Sosial</h4>
+                <div class="flex space-x-4 text-xl">
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center border-t border-green-700 mt-8 pt-5 text-sm">
+            &copy; 2025 MTs PSA Al Azhariyyah Cibulan. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Modal Area Guru (Teacher Admin) -->
+    <div id="admin-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 opacity-0 pointer-events-none z-50">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl transform transition-all duration-300 scale-95 max-h-[90vh] overflow-y-auto">
+            
+            <!-- Modal Header -->
+            <div class="mt-islamic-bg text-white p-6 rounded-t-xl flex justify-between items-center">
+                <h3 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-chalkboard-teacher mr-3 text-accent-gold"></i> Area Administrasi Guru
+                </h3>
+                <button onclick="closeAdminModal()" class="text-white hover:text-accent-gold transition">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 space-y-6">
+                <p id="auth-status" class="text-sm bg-green-50 text-primary-islamic p-3 rounded-lg flex items-center">
+                    <i class="fas fa-sync fa-spin mr-2"></i> Menghubungkan ke layanan...
+                </p>
+                <p id="user-info" class="text-sm font-mono break-all text-gray-500 hidden">
+                    ID Pengguna (UserID): <span id="user-id-display" class="font-bold text-gray-700"></span>
+                </p>
+
+                <!-- Form Unggah Dokumen -->
+                <div id="upload-form-section" class="border-b pb-4 hidden">
+                    <h4 class="text-xl font-semibold mb-3 text-primary-islamic">Unggah Dokumen Baru</h4>
+                    <!-- KLARIFIKASI PENTING -->
+                    <p class="text-sm text-red-700 bg-red-50 p-3 rounded-lg border border-red-200 mb-4">
+                        <i class="fas fa-info-circle mr-1"></i> **PENTING:** File fisik (RPP, Prota) **TIDAK** diunggah di sini. Pastikan file sudah di-*upload* ke Google Drive/Dropbox pribadi dan **atur tautan ke Publik** sebelum di-paste di bawah.
+                    </p>
+                    <!-- END KLARIFIKASI -->
+                    <form id="doc-upload-form" class="space-y-3 p-4 bg-gray-50 rounded-lg border">
+                        <div>
+                            <label for="doc-name" class="block text-sm font-medium text-gray-700">Nama Dokumen (Contoh: RPP Fiqih Kelas 7)</label>
+                            <input type="text" id="doc-name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-islamic focus:ring-primary-islamic p-2 border">
+                        </div>
+                        <div>
+                            <label for="doc-url" class="block text-sm font-medium text-gray-700">Tautan Dokumen (Google Drive/Dropbox URL)</label>
+                            <input type="url" id="doc-url" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-islamic focus:ring-primary-islamic p-2 border">
+                        </div>
+                        <button type="submit" class="w-full mt-4 btn-primary px-4 py-2 rounded-md font-semibold flex items-center justify-center">
+                            <i class="fas fa-upload mr-2"></i> Simpan Dokumen
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Daftar Dokumen -->
+                <div id="documents-list-section" class="hidden">
+                    <h4 class="text-xl font-semibold mb-3 text-primary-islamic">Daftar Administrasi Pembelajaran Anda</h4>
+                    <p class="text-sm text-gray-500 mb-4">Anda dapat mengubah status dokumen menjadi Publik agar dapat dilihat di menu Kurikulum.</p>
+                    <div id="documents-list" class="space-y-3">
+                        <p class="text-gray-400 italic" id="no-documents-message">Memuat dokumen...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Script Firebase dan Logika Aplikasi -->
+    <script type="module">
+        // Variabel global untuk konfigurasi Firebase (Disediakan oleh Lingkungan Canvas)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, query, addDoc, deleteDoc, serverTimestamp, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Atur log level debug untuk mempermudah debugging
+        setLogLevel('Debug');
+        
+        // Inisialisasi Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        
+        let userId = null;
+        let isAuthReady = false;
+
+        // --- Variabel Elemen UI ---
+        const authStatusEl = document.getElementById('auth-status');
+        const userIdDisplayEl = document.getElementById('user-id-display');
+        const uploadFormSectionEl = document.getElementById('upload-form-section');
+        const documentsListSectionEl = document.getElementById('documents-list-section');
+        const noDocumentsMessageEl = document.getElementById('no-documents-message');
+        const publicDocumentsListEl = document.getElementById('public-documents-list');
+        const publicNoDocumentsMessageEl = document.getElementById('public-no-documents-message');
+
+        // --- Firestore Collection References ---
+
+        /**
+         * Mengambil path koleksi dokumen guru (PRIVATE).
+         * Lokasi: /artifacts/{appId}/users/{userId}/teacher_documents
+         */
+        function getTeacherDocsCollectionRef(uid) {
+            return collection(db, `artifacts/${appId}/users/${uid}/teacher_documents`);
+        }
+        
+        /**
+         * Mengambil path koleksi dokumen kurikulum publik (PUBLIC).
+         * Lokasi: /artifacts/{appId}/public/data/curriculum_docs
+         */
+        function getPublicDocsCollectionRef() {
+            return collection(db, `artifacts/${appId}/public/data/curriculum_docs`);
+        }
+
+
+        // --- Logika Autentikasi ---
+
+        /**
+         * Menginisialisasi otentikasi.
+         */
+        async function initAuth() {
+            authStatusEl.textContent = 'Menyiapkan sesi pengguna...';
+            try {
+                // Set persistence to session to maintain login for the current session
+                await setPersistence(auth, browserSessionPersistence);
+                
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (error) {
+                console.error("Error during authentication:", error);
+                authStatusEl.textContent = `Error Autentikasi: ${error.message}. Coba refresh halaman.`;
+            }
+        }
+
+        /**
+         * Listener untuk perubahan status autentikasi.
+         */
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                userId = user.uid;
+                userIdDisplayEl.textContent = userId;
+                
+                authStatusEl.classList.add('bg-green-100', 'text-green-800');
+                authStatusEl.classList.remove('bg-green-50', 'text-primary-islamic', 'fa-spin');
+                authStatusEl.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Otentikasi Berhasil. Selamat Datang, Guru!`;
+                
+                document.getElementById('user-info').classList.remove('hidden');
+                uploadFormSectionEl.classList.remove('hidden');
+                documentsListSectionEl.classList.remove('hidden');
+
+                isAuthReady = true;
+                listenToDocuments(); // Untuk Admin Guru
+            } else {
+                userId = null;
+                isAuthReady = false;
+                authStatusEl.textContent = 'Menunggu otentikasi...';
+            }
+            
+            // Panggil listener dokumen publik terlepas dari status auth guru
+            listenToPublicDocuments();
+        });
+
+
+        // --- Logika Pengelolaan Dokumen Guru (Private) ---
+
+        /**
+         * Mengirim dokumen baru ke Firestore.
+         */
+        document.getElementById('doc-upload-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!isAuthReady || !userId) {
+                alertCustom('error', 'Autentikasi belum siap. Coba lagi.');
+                return;
+            }
+
+            const docName = document.getElementById('doc-name').value.trim();
+            const docUrl = document.getElementById('doc-url').value.trim();
+
+            if (!docName || !docUrl) return;
+
+            try {
+                // Membuat dokumen baru di koleksi pribadi pengguna, default isPublic = false
+                await addDoc(getTeacherDocsCollectionRef(userId), {
+                    name: docName,
+                    url: docUrl,
+                    isPublic: false, 
+                    uploadedBy: userId,
+                    createdAt: serverTimestamp()
+                });
+
+                document.getElementById('doc-name').value = '';
+                document.getElementById('doc-url').value = '';
+                alertCustom('success', 'Dokumen berhasil disimpan (Status: Privat).');
+
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alertCustom('error', 'Gagal menyimpan dokumen. Cek konsol untuk detail.');
+            }
+        });
+
+        /**
+         * Mengambil dan mendengarkan perubahan dokumen secara real-time (Private).
+         */
+        function listenToDocuments() {
+            if (!isAuthReady || !userId) return;
+
+            const q = query(getTeacherDocsCollectionRef(userId));
+            
+            onSnapshot(q, (snapshot) => {
+                const documents = [];
+                snapshot.forEach((doc) => {
+                    documents.push({ id: doc.id, ...doc.data() });
+                });
+
+                renderDocuments(documents);
+
+            }, (error) => {
+                console.error("Error listening to documents: ", error);
+                noDocumentsMessageEl.textContent = 'Gagal memuat dokumen: ' + error.message;
+            });
+        }
+
+        /**
+         * Menghapus dokumen dari Firestore (Private).
+         */
+        async function deleteDocument(docId, isPublic) {
+            if (!isAuthReady || !userId) return;
+            
+            showConfirmationModal('Apakah Anda yakin ingin menghapus dokumen ini?', async () => {
+                try {
+                    const docRef = doc(db, getTeacherDocsCollectionRef(userId).path, docId);
+                    await deleteDoc(docRef);
+                    
+                    // Hapus juga dari koleksi publik jika statusnya publik
+                    if (isPublic) {
+                        await removePublicStatus(docId);
+                    }
+                    
+                    alertCustom('success', 'Dokumen berhasil dihapus.');
+                } catch (error) {
+                    console.error("Error removing document: ", error);
+                    alertCustom('error', 'Gagal menghapus dokumen. Cek konsol untuk detail.');
+                }
+            });
+        }
+        
+        /**
+         * Mengubah status publik dokumen (Private <-> Public).
+         */
+        async function togglePublicStatus(docId, currentIsPublic, docData) {
+            if (!isAuthReady || !userId) return;
+
+            const newIsPublic = !currentIsPublic;
+            const actionText = newIsPublic ? 'dipublikasikan' : 'ditarik dari publik';
+
+            try {
+                // 1. Update status di koleksi private guru
+                const privateDocRef = doc(db, getTeacherDocsCollectionRef(userId).path, docId);
+                await setDoc(privateDocRef, { isPublic: newIsPublic }, { merge: true });
+
+                // 2. Update status di koleksi publik
+                if (newIsPublic) {
+                    // Jika dijadikan publik, tambahkan ke koleksi publik
+                    const publicDocRef = doc(db, getPublicDocsCollectionRef().path, docId); // Menggunakan ID private agar unik
+                    await setDoc(publicDocRef, {
+                        id: docId,
+                        name: docData.name,
+                        url: docData.url,
+                        uploaderId: userId,
+                        isPublic: true,
+                        publishedAt: serverTimestamp()
+                    });
+                    alertCustom('success', `Dokumen "${docData.name}" berhasil ${actionText}.`);
+                } else {
+                    // Jika dijadikan private, hapus dari koleksi publik
+                    await removePublicStatus(docId);
+                    alertCustom('success', `Dokumen "${docData.name}" berhasil ${actionText}.`);
+                }
+
+            } catch (error) {
+                console.error("Error toggling public status: ", error);
+                alertCustom('error', 'Gagal mengubah status publik. Cek konsol.');
+            }
+        }
+        
+        /**
+         * Menghapus dokumen dari koleksi publik.
+         */
+        async function removePublicStatus(docId) {
+            try {
+                const publicDocRef = doc(db, getPublicDocsCollectionRef().path, docId);
+                await deleteDoc(publicDocRef);
+            } catch (error) {
+                console.warn("Could not remove from public collection:", error);
+            }
+        }
+
+        /**
+         * Merender daftar dokumen ke UI Area Guru.
+         */
+        function renderDocuments(documents) {
+            const listEl = document.getElementById('documents-list');
+            listEl.innerHTML = ''; // Kosongkan daftar
+
+            if (documents.length === 0) {
+                noDocumentsMessageEl.textContent = 'Belum ada dokumen yang diunggah.';
+                listEl.appendChild(noDocumentsMessageEl);
+                noDocumentsMessageEl.classList.remove('hidden');
+                return;
+            }
+            noDocumentsMessageEl.classList.add('hidden');
+
+            // Sort by creation date descending (newest first)
+            documents.sort((a, b) => (b.createdAt?.toMillis() || 0) - (a.createdAt?.toMillis() || 0));
+
+            documents.forEach(docData => {
+                const docItem = document.createElement('div');
+                docItem.className = 'flex flex-col md:flex-row justify-between items-start md:items-center p-3 bg-white border rounded-lg shadow-sm';
+                
+                const isPublic = docData.isPublic || false;
+                const statusColor = isPublic ? 'text-green-600 bg-green-100' : 'text-gray-500 bg-gray-100';
+                const statusIcon = isPublic ? 'fas fa-globe' : 'fas fa-lock';
+                const publicButtonText = isPublic ? 'Jadikan Privat' : 'Jadikan Publik';
+                const publicButtonClass = isPublic ? 'bg-green-500 hover:bg-green-600' : 'bg-accent-gold hover:bg-orange-600';
+
+                const timeString = docData.createdAt ? new Date(docData.createdAt.seconds * 1000).toLocaleDateString('id-ID') : 'N/A';
+                
+                docItem.innerHTML = `
+                    <div class="flex-grow min-w-0 mb-2 md:mb-0">
+                        <p class="font-semibold text-gray-900 truncate">${docData.name}</p>
+                        <span class="text-xs font-medium px-2 py-0.5 rounded-full ${statusColor}">
+                            <i class="${statusIcon} mr-1"></i> Status: ${isPublic ? 'Publik' : 'Privat'}
+                        </span>
+                        <p class="text-xs text-gray-500 mt-1">
+                            <i class="fas fa-calendar-alt mr-1"></i> Diunggah: ${timeString}
+                        </p>
+                    </div>
+                    <div class="flex space-x-2 flex-wrap justify-end">
+                        <a href="${docData.url}" target="_blank" class="text-sm px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition flex items-center mb-1 md:mb-0">
+                            <i class="fas fa-external-link-alt mr-1"></i> Lihat
+                        </a>
+                        <button data-id="${docData.id}" data-public="${isPublic}" 
+                                class="toggle-public-btn text-sm px-3 py-1 ${publicButtonClass} text-white rounded-full transition flex items-center mb-1 md:mb-0">
+                            <i class="fas fa-sync-alt mr-1"></i> ${publicButtonText}
+                        </button>
+                        <button data-id="${docData.id}" data-public="${isPublic}"
+                                class="delete-doc-btn text-sm px-3 py-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition flex items-center">
+                            <i class="fas fa-trash-alt mr-1"></i> Hapus
+                        </button>
+                    </div>
+                `;
+                listEl.appendChild(docItem);
+            });
+
+            // Tambahkan listener untuk tombol hapus
+            listEl.querySelectorAll('.delete-doc-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const docId = e.currentTarget.getAttribute('data-id');
+                    const isPublic = e.currentTarget.getAttribute('data-public') === 'true';
+                    deleteDocument(docId, isPublic);
+                });
+            });
+            
+            // Tambahkan listener untuk tombol publikasi
+            listEl.querySelectorAll('.toggle-public-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const docId = e.currentTarget.getAttribute('data-id');
+                    const currentIsPublic = e.currentTarget.getAttribute('data-public') === 'true';
+                    // Cari data lengkap dokumen dari array documents
+                    const docData = documents.find(d => d.id === docId);
+                    togglePublicStatus(docId, currentIsPublic, docData);
+                });
+            });
+        }
+
+
+        // --- Logika Dokumen Kurikulum Publik ---
+
+        /**
+         * Mengambil dan mendengarkan perubahan dokumen publik secara real-time.
+         */
+        function listenToPublicDocuments() {
+            const q = query(getPublicDocsCollectionRef());
+            
+            onSnapshot(q, (snapshot) => {
+                const publicDocuments = [];
+                snapshot.forEach((doc) => {
+                    publicDocuments.push({ id: doc.id, ...doc.data() });
+                });
+
+                renderPublicDocuments(publicDocuments);
+
+            }, (error) => {
+                console.error("Error listening to public documents: ", error);
+                publicNoDocumentsMessageEl.textContent = 'Gagal memuat dokumen publik: ' + error.message;
+            });
+        }
+
+        /**
+         * Merender daftar dokumen publik ke UI Kurikulum.
+         */
+        function renderPublicDocuments(documents) {
+            publicDocumentsListEl.innerHTML = ''; // Kosongkan daftar
+
+            if (documents.length === 0) {
+                publicNoDocumentsMessageEl.textContent = 'Belum ada dokumen kurikulum yang dipublikasikan oleh guru.';
+                publicDocumentsListEl.appendChild(publicNoDocumentsMessageEl);
+                publicNoDocumentsMessageEl.classList.remove('hidden');
+                return;
+            }
+            publicNoDocumentsMessageEl.classList.add('hidden');
+
+            // Sort by published date descending (newest first)
+            documents.sort((a, b) => (b.publishedAt?.toMillis() || 0) - (a.publishedAt?.toMillis() || 0));
+
+            documents.forEach(docData => {
+                const docItem = document.createElement('div');
+                docItem.className = 'flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-gray-50 border-l-4 border-accent-gold rounded-lg shadow-sm hover:shadow-md transition';
+                
+                const timeString = docData.publishedAt ? new Date(docData.publishedAt.seconds * 1000).toLocaleDateString('id-ID') : 'N/A';
+                
+                docItem.innerHTML = `
+                    <div class="flex-grow min-w-0 mb-2 sm:mb-0">
+                        <p class="font-semibold text-gray-900 truncate">${docData.name}</p>
+                        <p class="text-xs text-gray-500 mt-1">
+                            <i class="fas fa-calendar-check mr-1"></i> Dipublikasikan: ${timeString}
+                        </p>
+                    </div>
+                    <a href="${docData.url}" target="_blank" class="flex-shrink-0 text-sm px-4 py-2 btn-primary rounded-full font-semibold flex items-center sm:ml-4">
+                        <i class="fas fa-download mr-1"></i> Unduh
+                    </a>
+                `;
+                publicDocumentsListEl.appendChild(docItem);
+            });
+        }
+
+        // --- Logika UI (Modal & Navbar) ---
+
+        const adminModal = document.getElementById('admin-modal');
+
+        window.showAdminModal = function() {
+            adminModal.classList.remove('pointer-events-none', 'opacity-0');
+            adminModal.querySelector('div').classList.add('scale-100');
+            adminModal.querySelector('div').classList.remove('scale-95');
+        }
+
+        window.closeAdminModal = function() {
+            adminModal.querySelector('div').classList.add('scale-95');
+            adminModal.querySelector('div').classList.remove('scale-100');
+            setTimeout(() => {
+                adminModal.classList.add('pointer-events-none', 'opacity-0');
+            }, 300);
+        }
+
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Event listener untuk menutup modal saat klik di luar area modal
+        adminModal.addEventListener('click', (e) => {
+            if (e.target === adminModal) {
+                closeAdminModal();
+            }
+        });
+
+        // Fungsi Alert Kustom (Pengganti alert())
+        function alertCustom(type, message) {
+            const alertBox = document.createElement('div');
+            const color = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+            
+            alertBox.className = `${color} text-white p-3 rounded-lg shadow-xl fixed top-20 right-5 z-50 transition transform duration-300 opacity-0 translate-y-[-20px]`;
+            alertBox.textContent = message;
+
+            document.body.appendChild(alertBox);
+
+            // Tampilkan
+            setTimeout(() => {
+                alertBox.classList.remove('opacity-0', 'translate-y-[-20px]');
+                alertBox.classList.add('opacity-100', 'translate-y-0');
+            }, 10);
+
+            // Sembunyikan setelah 3 detik
+            setTimeout(() => {
+                alertBox.classList.remove('opacity-100', 'translate-y-0');
+                alertBox.classList.add('opacity-0', 'translate-y-[-20px]');
+                setTimeout(() => alertBox.remove(), 300);
+            }, 3000);
+        }
+
+        // Fungsi Modal Konfirmasi Kustom (Pengganti confirm())
+        window.showConfirmationModal = function(message, onConfirm) {
+            const modalHtml = `
+                <div id="confirm-modal-overlay" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-[9999]">
+                    <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 transform transition-all">
+                        <h4 class="text-xl font-bold mb-4 text-primary-islamic flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-2 text-accent-gold"></i> Konfirmasi
+                        </h4>
+                        <p class="text-gray-700 mb-6">${message}</p>
+                        <div class="flex justify-end space-x-3">
+                            <button id="cancel-btn" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition">Batal</button>
+                            <button id="confirm-btn" class="px-4 py-2 btn-primary rounded-lg transition">Ya, Lanjutkan</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+            const overlay = document.getElementById('confirm-modal-overlay');
+
+            document.getElementById('confirm-btn').onclick = () => {
+                onConfirm();
+                overlay.remove();
+            };
+
+            document.getElementById('cancel-btn').onclick = () => {
+                overlay.remove();
+            };
+
+            overlay.onclick = (e) => {
+                if (e.target === overlay) {
+                    overlay.remove();
+                }
+            };
+        }
+
+        // Panggil inisialisasi otentikasi saat script dimuat
+        initAuth();
+    </script>
+</body>
+</html>
